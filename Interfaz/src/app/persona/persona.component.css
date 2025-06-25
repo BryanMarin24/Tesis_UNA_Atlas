@@ -76,3 +76,19 @@ button[type="submit"]:hover {
 .persona-table button:hover {
   transform: scale(1.1);
 }
+.btn-limpiar {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  background-color: #6c757d;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-limpiar:hover {
+  background-color: #5a6268;
+}

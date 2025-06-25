@@ -1,4 +1,3 @@
-// src/app/persona/persona.component.ts
 import { Component, OnInit } from '@angular/core';
 import { PersonaService, PersonaRequest } from './persona.service';
 
@@ -53,6 +52,7 @@ export class PersonaComponent implements OnInit {
       next: () => {
         alert('✅ Persona eliminada');
         this.cargarPersonas();
+        this.limpiarFormulario(); // También puedes limpiar después de eliminar si gustas
       },
       error: err => console.error('Error al eliminar', err)
     });
@@ -73,10 +73,21 @@ export class PersonaComponent implements OnInit {
     this.personaService.registrarPersona(body).subscribe({
       next: () => {
         alert('✅ Persona registrada/actualizada');
-        this.persona = { idPersona: null, nombre: '', apellido1: '', apellido2: '', telefono: null, correo: '' };
+        this.limpiarFormulario();
         this.cargarPersonas();
       },
       error: err => console.error('Error al registrar', err)
     });
+  }
+
+  limpiarFormulario(): void {
+    this.persona = {
+      idPersona: null,
+      nombre: '',
+      apellido1: '',
+      apellido2: '',
+      telefono: null,
+      correo: ''
+    };
   }
 }

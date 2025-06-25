@@ -8,6 +8,8 @@
     <input [(ngModel)]="persona.telefono" name="telefono" placeholder="Teléfono" type="number" />
     <input [(ngModel)]="persona.correo" name="correo" placeholder="Correo" type="email" />
     <button type="submit">Registrar</button>
+    <button type="button" (click)="limpiarFormulario()" class="btn-limpiar">Limpiar</button>
+
   </form>
 </div>
 
