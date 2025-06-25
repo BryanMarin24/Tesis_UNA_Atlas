@@ -1,7 +1,7 @@
-<!-- persona.component.html -->
 <div class="form-container">
   <h2>Registrar Persona</h2>
-  <form (ngSubmit)="registrar()" class="persona-form">
+  <form (ngSubmit)="registrar()">
+    <!-- Inputs -->
     <input [(ngModel)]="persona.nombre" name="nombre" placeholder="Nombre" required />
     <input [(ngModel)]="persona.apellido1" name="apellido1" placeholder="Apellido 1" required />
     <input [(ngModel)]="persona.apellido2" name="apellido2" placeholder="Apellido 2" />
@@ -10,3 +10,30 @@
     <button type="submit">Registrar</button>
   </form>
 </div>
+
+<table class="persona-table" *ngIf="personas.length > 0">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido 1</th>
+      <th>Apellido 2</th>
+      <th>Teléfono</th>
+      <th>Correo</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of personas">
+      <td>{{ p.nombre }}</td>
+      <td>{{ p.apellido1 }}</td>
+      <td>{{ p.apellido2 }}</td>
+      <td>{{ p.telefono }}</td>
+      <td>{{ p.correo }}</td>
+      <td>
+        <button (click)="editarPersona(p)">✏️</button>
+        <button (click)="eliminarPersona(p.idPersona)">🗑️</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

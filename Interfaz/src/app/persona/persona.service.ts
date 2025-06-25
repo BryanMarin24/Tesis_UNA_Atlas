@@ -15,12 +15,21 @@ export interface PersonaRequest {
 
 @Injectable({ providedIn: 'root' })
 export class PersonaService {
-  private apiUrl = 'https://localhost:53599/api/Personas/mantenimiento';
+  private apiUrl = 'https://localhost:53599/api/Personas';
 
   constructor(private http: HttpClient) {}
 
 registrarPersona(data: PersonaRequest): Observable<any> {
-  return this.http.post(this.apiUrl, data, { responseType: 'text' });
+  return this.http.post(`${this.apiUrl}/mantenimiento`, data, { responseType: 'text' });
 }
 
+ obtenerPersonas(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/consulta`);
+  }
+
+  
+
+
 }
+
+
