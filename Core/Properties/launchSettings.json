@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Atlas_CORE_WebAPI_NET7": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:53599;http://localhost:53600"
+    }
+  }
+}

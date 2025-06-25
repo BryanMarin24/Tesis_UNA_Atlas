@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "Atlas_CORE_WebAPI_NET7.Controllers.PersonasController",
+    "Method": "Mantenimiento",
+    "RelativePath": "api/Personas/mantenimiento",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "persona",
+        "Type": "Atlas_CORE_WebAPI_NET7.Controllers.PersonasController\u002BPersonaDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
