@@ -1,0 +1,12 @@
+<!-- persona.component.html -->
+<div class="form-container">
+  <h2>Registrar Persona</h2>
+  <form (ngSubmit)="registrar()" class="persona-form">
+    <input [(ngModel)]="persona.nombre" name="nombre" placeholder="Nombre" required />
+    <input [(ngModel)]="persona.apellido1" name="apellido1" placeholder="Apellido 1" required />
+    <input [(ngModel)]="persona.apellido2" name="apellido2" placeholder="Apellido 2" />
+    <input [(ngModel)]="persona.telefono" name="telefono" placeholder="Teléfono" type="number" />
+    <input [(ngModel)]="persona.correo" name="correo" placeholder="Correo" type="email" />
+    <button type="submit">Registrar</button>
+  </form>
+</div>
