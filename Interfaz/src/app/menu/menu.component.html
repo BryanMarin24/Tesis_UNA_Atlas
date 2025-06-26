@@ -1,9 +1,27 @@
-<nav class="navbar">
-  <ul>
-    <li><a routerLink="/inicio" routerLinkActive="activo">Inicio</a></li>
-    <li><a routerLink="/estudios" routerLinkActive="activo">Estudios</a></li>
-    <li><a routerLink="/mantenimiento" routerLinkActive="activo">Mantenimiento</a></li>
-    <li><a routerLink="/reporteria" routerLinkActive="activo">Reportería</a></li>
-    <li><a routerLink="/acerca" routerLinkActive="activo">Acerca de Nosotros</a></li>
-  </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/inicio">TESIS UNA</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+         <a class="nav-link" [routerLink]="'/inicio'" routerLinkActive="active">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/estudios" routerLinkActive="active">Estudios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/mantenimiento" routerLinkActive="active">Mantenimiento</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/reporteria" routerLinkActive="active">Reportería</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/acerca" routerLinkActive="active">Acerca de Nosotros</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>
