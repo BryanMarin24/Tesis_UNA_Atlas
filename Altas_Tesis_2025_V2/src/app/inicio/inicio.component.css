@@ -1,0 +1,44 @@
+/* Fondo general */
+body {
+  background-color: #f8f9fa;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #1c2235;
+}
+
+.navbar-brand,
+.nav-link {
+  color: #ffffff !important;
+}
+
+/* Jumbotron */
+.jumbotron {
+  background-color: #003366;
+  color: #ffffff;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* Iconos de características */
+.featurette-icon {
+  font-size: 3rem;
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+/* Separador entre secciones */
+.featurette-divider {
+  margin: 5rem 0;
+}
+
+/* Títulos */
+.featurette-heading {
+  font-weight: 300;
+}
+
+/* Texto principal */
+.lead {
+  font-size: 1.25rem;
+}

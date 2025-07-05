@@ -1,0 +1,31 @@
+/* Acerca de */
+.acerca-section {
+  margin-top: 8rem;
+  margin-bottom: 4rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.acerca-section h4 {
+  margin-top: 1.5rem;
+  color: #1c2235;
+}
+
+.acerca-section ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.acerca-section ul li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.acerca-section ul li i {
+  position: absolute;
+  left: 0;
+  color: #003366;
+}

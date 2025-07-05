@@ -1,0 +1,62 @@
+<div class="layout-container">
+  <!-- Fila superior: Formulario + Mapa -->
+  <div class="top-section">
+    <!-- Formulario -->
+    <div class="form-container">
+      <h2>Registrar Persona</h2>
+      <form (ngSubmit)="registrar()">
+        <input [(ngModel)]="persona.nombre" name="nombre" placeholder="Nombre" required />
+        <input [(ngModel)]="persona.apellido1" name="apellido1" placeholder="Apellido 1" required />
+        <input [(ngModel)]="persona.apellido2" name="apellido2" placeholder="Apellido 2" />
+        <input type="tel" [(ngModel)]="persona.telefono" name="telefono" placeholder="Teléfono" />
+        <input [(ngModel)]="persona.correo" name="correo" placeholder="Correo" type="email" />
+
+        <div class="button-row">
+          <button type="submit">Registrar</button>
+          <button type="button" (click)="limpiarFormulario()" class="btn-limpiar">Limpiar</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Mapa -->
+    <div class="map-container">
+      <h3>Ubicación</h3>
+      <!-- Puedes insertar un mapa de Leaflet, Google Maps, etc. aquí -->
+      <div class="map-placeholder">
+        <app-mapa></app-mapa>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fila inferior: Tabla -->
+      
+  <div class="table-container" *ngIf="personas.length > 0">
+ <h3>Listado de fincas</h3>
+    <table class="persona-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Primer apellido</th>
+          <th>Segundo apellido</th>
+          <th>Teléfono</th>
+          <th>Correo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tr *ngFor="let p of personas">
+          <td>{{ p.nombre }}</td>
+          <td>{{ p.apellido1 }}</td>
+          <td>{{ p.apellido2 }}</td>
+          <td>{{ p.telefono }}</td>
+          <td>{{ p.correo }}</td>
+          <td>
+            <button (click)="editarPersona(p)">✏️</button>
+            <button (click)="eliminarPersona(p.idPersona)">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
