@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Panel lateral -->
+    <div class="col-md-3 bg-light p-3">
+      <form>
+        <div class="mb-2">
+  <label class="form-label">Provincia:</label>
+  <select class="form-select" [(ngModel)]="provinciaSeleccionada" name="provinciaSeleccionada">
+    <option value="">Seleccione una provincia</option>
+    <option *ngFor="let provincia of provincias" [value]="provincia.id">{{ provincia.tC_DescProvincia }}</option>
+  </select>
+</div>
+<div class="mb-2">
+  <label class="form-label">Indicador:</label>
+  <select class="form-select" [(ngModel)]="indicadorSeleccionado" name="indicadorSeleccionado">
+    <option value="">Seleccione un indicador</option>
+    <option *ngFor="let indicador of indicadores" [value]="indicador.id">{{ indicador.descripcion }}</option>
+  </select>
+</div>
+<div class="mb-2">
+  <label class="form-label">Año:</label>
+  <select class="form-select" [(ngModel)]="anioSeleccionado" name="anioSeleccionado">
+    <option value="">Seleccione un año</option>
+    <option *ngFor="let anio of anios" [value]="anio.id">{{ anio.anio }}</option>
+  </select>
+</div>
+        <div class="mb-2">
+          <label>Longitud:</label>
+          <input type="text" class="form-control" [(ngModel)]="longitud" name="longitud" />
+        </div>
+        <div class="mb-2">
+          <label>Latitud:</label>
+          <input type="text" class="form-control" [(ngModel)]="latitud" name="latitud" />
+        </div>
+        <hr />
+        <div class="mb-2">
+          <label>Transparencia:</label>
+          <input type="range" class="form-range" min="0" max="1" step="0.1" [(ngModel)]="transparencia" name="transparencia" />
+        </div>
+        <div class="mb-2">
+          <label>Tipo de mapa:</label>
+          <select class="form-select" [(ngModel)]="tipoMapa" name="tipoMapa">
+            <option value="osm">Simple</option>
+            <option value="satellite">Satélite</option>
+          </select>
+        </div>
+      </form>
+    </div>
+
+    <!-- Mapa OpenLayers -->
+    <div class="col-md-9 p-0">
+      <div id="map" class="map" style="height: 600px; width: 100%;"></div>
+    </div>
+  </div>
+
+  <!-- Panel de información -->
+  <div class="row bg-white p-2 mt-2 border">
+    <div class="col">
+      <strong>Nota:</strong> Los colores representan la temperatura promedio anual...
+    </div>
+  </div>
+</div>

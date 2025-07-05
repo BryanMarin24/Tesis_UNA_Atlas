@@ -1,15 +1,3 @@
-<!--@if (authService.currentUserSig() == null){
-<div>
-  <a routerLink="/login">Login</a>
-  <a routerLink="/register">Register</a>
-</div>
-}
-@if (authService.currentUserSig()){
-<div>
-  {{authService.currentUserSig()?.username}}
-  <span (click)="logout()">Logout</span>
-</div>
-}-->
 
 <!-- Mostrar menú solo si no es login o register -->
 <app-menu *ngIf="showMenu()" />
