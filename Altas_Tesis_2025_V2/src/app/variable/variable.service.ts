@@ -18,7 +18,8 @@ export class CatalogosService {
     return this.http.get<any[]>(`${this.baseUrl}/indicadores`);
   }
 
-  obtenerAnios(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/anio`);
-  }
+
+
+
+
 }

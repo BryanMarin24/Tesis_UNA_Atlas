@@ -4,46 +4,127 @@
     <div class="col-md-3 bg-light p-3">
       <form>
         <div class="mb-2">
-  <label class="form-label">Provincia:</label>
-  <select class="form-select" [(ngModel)]="provinciaSeleccionada" name="provinciaSeleccionada">
-    <option value="">Seleccione una provincia</option>
-    <option *ngFor="let provincia of provincias" [value]="provincia.id">{{ provincia.tC_DescProvincia }}</option>
-  </select>
-</div>
-<div class="mb-2">
-  <label class="form-label">Indicador:</label>
-  <select class="form-select" [(ngModel)]="indicadorSeleccionado" name="indicadorSeleccionado">
-    <option value="">Seleccione un indicador</option>
-    <option *ngFor="let indicador of indicadores" [value]="indicador.id">{{ indicador.descripcion }}</option>
-  </select>
-</div>
-<div class="mb-2">
-  <label class="form-label">Año:</label>
-  <select class="form-select" [(ngModel)]="anioSeleccionado" name="anioSeleccionado">
-    <option value="">Seleccione un año</option>
-    <option *ngFor="let anio of anios" [value]="anio.id">{{ anio.anio }}</option>
-  </select>
-</div>
+          <label class="form-label">Provincia:</label>
+          <select
+            class="form-select"
+            [(ngModel)]="provinciaSeleccionada"
+            name="provinciaSeleccionada"
+            (ngModelChange)="onProvinciaSeleccionada()">
+            <option value="">Seleccione una provincia</option>
+            <option *ngFor="let provincia of provincias" [value]="provincia.tN_CodigoProvincia">
+              {{ provincia.tC_DescProvincia }}
+            </option>
+          </select>
+        </div>
+
         <div class="mb-2">
+          <label class="form-label">Indicador:</label>
+          <select
+            class="form-select"
+            [(ngModel)]="indicadorSeleccionado"
+            name="indicadorSeleccionado"
+             (ngModelChange)="onIndicadorSeleccionada()">
+            <option value="">Seleccione un indicador</option>
+            <option *ngFor="let indicador of indicadores" [value]="indicador.idIndicador">{{ indicador.descripcion }}
+            </option>
+          </select>
+        </div>
+
+
+
+
+
+        <div class="mb-2">
+  <label class="form-label">Fecha:</label>
+  <input
+    type="date"
+    class="form-control"
+    [(ngModel)]="fechaSeleccionada"
+    name="fechaSeleccionada"
+    (ngModelChange)="actualizarEstiloProvincia()" />
+</div>
+
+
+        <!--<div class="mb-2">
           <label>Longitud:</label>
           <input type="text" class="form-control" [(ngModel)]="longitud" name="longitud" />
         </div>
+
         <div class="mb-2">
           <label>Latitud:</label>
           <input type="text" class="form-control" [(ngModel)]="latitud" name="latitud" />
+        </div>-->
+
+        <div class="mb-2 text-end">
+          <button type="button" class="btn btn-primary" (click)="centrarMapa()">Centrar mapa</button>
         </div>
+
         <hr />
-        <div class="mb-2">
-          <label>Transparencia:</label>
-          <input type="range" class="form-range" min="0" max="1" step="0.1" [(ngModel)]="transparencia" name="transparencia" />
-        </div>
+
+<input
+  type="range"
+  class="form-range"
+  min="0"
+  max="1"
+  step="0.1"
+  [(ngModel)]="transparencia"
+  (ngModelChange)="actualizarTransparencia()"
+  name="transparencia" />
+
+
+
+
         <div class="mb-2">
           <label>Tipo de mapa:</label>
-          <select class="form-select" [(ngModel)]="tipoMapa" name="tipoMapa">
+          <select class="form-select" (change)="actualizarBaseLayer()" [(ngModel)]="tipoMapa" name="tipoMapa">
             <option value="osm">Simple</option>
             <option value="satellite">Satélite</option>
           </select>
         </div>
+
+<div class="mb-4 mt-3" *ngIf="gradienteLeyenda">
+  <label class="form-label fw-bold">Colores:</label>
+  <div style="display: flex; align-items: center;">
+    <span *ngIf="minLeyenda !== ''" style="width: 30px; text-align: right;">{{ minLeyenda }}</span>
+    <div class="mx-2 flex-grow-1" style="height: 20px;" [ngStyle]="{ 'background': gradienteLeyenda }"></div>
+    <span *ngIf="maxLeyenda !== ''" style="width: 30px;">{{ maxLeyenda }}</span>
+  </div>
+  <small class="text-muted d-block mt-1">{{ notaLeyenda }}</small>
+</div>
+
+
+<div class="card mt-3 p-2 border">
+  <h6 class="fw-bold">Información</h6>
+ <table class="table table-sm table-bordered mb-0">
+  <thead class="table-light">
+    <tr>
+      <th>Variable</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Provincia</td>
+      <td>{{ provinciaSeleccionadaNombre }}</td>
+    </tr>
+    <tr>
+      <td>Indicador</td>
+      <td>{{ descripcionIndicador }}</td>
+    </tr>
+    <tr>
+      <td>Fecha seleccionada</td>
+      <td>{{ fechaSeleccionada | date }}</td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+</div>
+
+
+
+
       </form>
     </div>
 
@@ -56,7 +137,7 @@
   <!-- Panel de información -->
   <div class="row bg-white p-2 mt-2 border">
     <div class="col">
-      <strong>Nota:</strong> Los colores representan la temperatura promedio anual...
+      <strong>Nota:</strong> Los colores representan la temperatura promedio por día...
     </div>
   </div>
 </div>
