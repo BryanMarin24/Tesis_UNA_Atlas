@@ -50,6 +50,8 @@ anioSeleccionado: number | null = null;
 
   fechaSeleccionada: string = ''; // formato YYYY-MM-DD
 
+prediccionDatos: any[] = [];
+
 
  
 
@@ -387,6 +389,9 @@ notaLeyenda: string = '';
 mostrarExtremos: boolean = true;
 
 
+mostrarPrediccion: boolean = false;
+
+
 actualizarLeyendaPorIndicador(): void {
   const config = this.indicadoresConfig[this.indicadorSeleccionado];
   if (config) {
@@ -412,5 +417,27 @@ get provinciaSeleccionadaNombre(): string {
   return provincia ? provincia.tC_DescProvincia : '';
 }
 
+
+
+  obtenerPrediccion(): void {
+    if (!this.provinciaSeleccionada || !this.indicadorSeleccionado) {
+      alert('Debe seleccionar provincia e indicador');
+      return;
+    }
+
+    const idProvincia = Number(this.provinciaSeleccionada);
+    const idIndicador = Number(this.indicadorSeleccionado);
+
+    this.catalogosService.obtenerPrediccionTemperatura(idProvincia, idIndicador)
+      .subscribe(
+        (data: any[]) => {
+          this.prediccionDatos = data;
+          console.log(this.prediccionDatos);
+        },
+        (error) => {
+          console.error('Error al obtener predicción:', error);
+        }
+      );
+  }
 
 }

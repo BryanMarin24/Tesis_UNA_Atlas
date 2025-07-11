@@ -44,6 +44,36 @@
     (ngModelChange)="actualizarEstiloProvincia()" />
 </div>
 
+<div class="form-check mb-2">
+  <input type="checkbox" name="mostrarPrediccion" [(ngModel)]="mostrarPrediccion" (change)="obtenerPrediccion()">
+
+  <label class="form-check-label" for="mostrarPrediccion">Mostrar predicción</label>
+</div>
+
+
+<div *ngIf="mostrarPrediccion && prediccionDatos.length > 0" class="mt-3">
+  <h5>Predicción de Temperatura</h5>
+  <table class="table table-bordered table-striped table-sm">
+    <thead class="table-dark">
+      <tr>
+        <th>Fecha</th>
+        <th>Temperatura Esperada (°C)</th>
+        <th>Mínima Estimada (°C)</th>
+        <th>Máxima Estimada (°C)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let fila of prediccionDatos">
+        <td>{{ fila.ds | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ fila.yhat | number: '1.2-2' }}</td>
+        <td>{{ fila.yhat_lower | number: '1.2-2' }}</td>
+        <td>{{ fila.yhat_upper | number: '1.2-2' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
 
         <!--<div class="mb-2">
           <label>Longitud:</label>

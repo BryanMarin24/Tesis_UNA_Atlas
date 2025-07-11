@@ -10,6 +10,21 @@
         <input [(ngModel)]="persona.apellido2" name="apellido2" placeholder="Apellido 2" />
         <input type="tel" [(ngModel)]="persona.telefono" name="telefono" placeholder="Teléfono" />
         <input [(ngModel)]="persona.correo" name="correo" placeholder="Correo" type="email" />
+        <div style="display: flex; align-items: center; gap: 10px;">
+  <label for="radioPunto">Diámetro</label>
+  <input
+    type="range"
+    id="radioPunto"
+    name="radioPunto"
+    min="3"
+    max="20"
+    [(ngModel)]="radioPunto"
+    (input)="actualizarEstiloPunto()"
+    style="flex: 1;"
+  />
+</div>
+
+        
 
         <div class="button-row">
           <button type="submit">Registrar</button>
@@ -23,7 +38,10 @@
       <h3>Ubicación</h3>
       <!-- Puedes insertar un mapa de Leaflet, Google Maps, etc. aquí -->
       <div class="map-placeholder">
-        <app-mapa></app-mapa>
+
+
+      <div id="map" class="map" ></div>
+
       </div>
     </div>
   </div>
